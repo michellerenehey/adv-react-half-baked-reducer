@@ -10,13 +10,16 @@ function countReducer(count, action) {
     case 'increment': {
       return count + 1
     }
+    case 'decrement': {
+      return count - 1
+    }
     default: {
       throw Error(`unknown action: ${action.type}`)
     }
   }
 }
 export default function Counter() {
-  // const [count, setCount] = useState(0)
+  // set up useReducer hook
   const [count, dispatch] = useReducer(countReducer, 0)
   const [currentColor, setCurrentColor] = useState(pinkRGB)
 
@@ -36,7 +39,6 @@ export default function Counter() {
 
   // these are the event handler functions
   const increment = () => {
-    // setCount((prevState) => prevState + 1)
     dispatch({
       type: 'increment',
     })
@@ -44,6 +46,9 @@ export default function Counter() {
 
   const decrement = () => {
     // setCount((prevState) => prevState - 1)
+    dispatch({
+      type: 'decrement',
+    })
   }
 
   const reset = () => {
