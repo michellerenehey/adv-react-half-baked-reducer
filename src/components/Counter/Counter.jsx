@@ -1,8 +1,7 @@
-import { useEffect, useState, useReducer } from 'react'
+import { useReducer } from 'react'
 
 const pinkRGB = `rgb(236, 72, 153)`
 const initialState = { count: 0, currentColor: pinkRGB }
-// set up reducer function
 
 function getColor(count) {
   if (count === 0) {
@@ -20,7 +19,6 @@ function getColor(count) {
   return pinkRGB
 }
 function countReducer(state, action) {
-  // const currentColor = getColor(state.count)
   switch (action.type) {
     case 'increment':
       return { count: state.count + 1, currentColor: getColor(state.count + 1) }
@@ -34,11 +32,8 @@ function countReducer(state, action) {
 }
 
 export default function Counter() {
-  // set up useReducer hook
   const [state, dispatch] = useReducer(countReducer, initialState)
-  // const [currentColor, setCurrentColor] = useState(pinkRGB)
 
-  // these are the event handler functions, refactor with dispatch
   const increment = () => {
     dispatch({
       type: 'increment',
