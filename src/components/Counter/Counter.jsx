@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { useReducer } from 'react'
+import { useEffect, useState, useReducer } from 'react'
 
 const pinkRGB = `rgb(236, 72, 153)`
 
