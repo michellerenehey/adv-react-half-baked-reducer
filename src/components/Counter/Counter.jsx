@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useReducer } from 'react'
 
-// initial state
 const pinkRGB = `rgb(236, 72, 153)`
 
 // set up reducer function
@@ -12,6 +11,9 @@ function countReducer(count, action) {
     }
     case 'decrement': {
       return count - 1
+    }
+    case 'reset': {
+      return 0
     }
     default: {
       throw Error(`unknown action: ${action.type}`)
@@ -37,7 +39,7 @@ export default function Counter() {
     }
   }, [count])
 
-  // these are the event handler functions
+  // these are the event handler functions, refactor with dispatch
   const increment = () => {
     dispatch({
       type: 'increment',
@@ -45,14 +47,15 @@ export default function Counter() {
   }
 
   const decrement = () => {
-    // setCount((prevState) => prevState - 1)
     dispatch({
       type: 'decrement',
     })
   }
 
   const reset = () => {
-    // setCount(0)
+    dispatch({
+      type: 'reset',
+    })
   }
 
   return (
